@@ -1,0 +1,23 @@
+
+
+
+<?php
+$form = $this->form;
+$form->prepare();
+//$form->setAttribute('action', $this->url('application', array('action' => 'edit')))->prepare();
+echo $this->form()->openTag($form);
+?>
+
+
+
+<?php $element = $form->get("conversationId"); ?>
+<?php echo $this->formElement($element); ?>
+<?php $element = $form->get("state"); ?>
+<?php echo $this->formElement($element); ?>
+<?php $element = $form->get("submit"); 
+  $element->setAttribute('class', 'btn btn-success');
+  ?>
+<?php echo $this->formElement($element); ?>
+
+<?php echo $this->form()->closeTag($form); ?>
+

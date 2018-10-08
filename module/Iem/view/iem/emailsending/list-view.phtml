@@ -1,0 +1,129 @@
+<meta http-equiv="refresh" content="90" name="content-type" />
+<?php if ($this->ScheduleSendingEmail): ?>
+    <div class="row container-fluidt">
+        <br>
+        <div class="col-lg-6">
+            <h4 class="page-header"><?php echo $this->ScheduleSendingEmail->getName(); ?></h4>
+            <table class="table table-bordered cdiFontSize11 padding2">
+                <tr>
+                <tr>
+                    <th>Estado:</th><td><?php echo $this->ScheduleSendingEmail->getState(); ?></td>
+                </tr>
+
+                <th>Fecha de Programación:</th><td><?php echo $this->ScheduleSendingEmail->getDatetimeSchedule()->format("Y-m-d H:i"); ?></td>
+                </tr>
+
+                <tr>
+                    <th>Total</th><td><?php echo $this->ScheduleSendingEmail->getEmailsTotal(); ?></td>
+                </tr>
+                <tr class="info">
+                    <th>Procesado</th><td><?php echo $this->ScheduleSendingEmail->getEmailsProcessed(); ?></td>
+                </tr>
+
+
+                <tr class="warning">
+                    <th>Pendiente</th><td><?php echo $this->ScheduleSendingEmail->getEmailsPending(); ?></td>
+                </tr>
+
+
+                <tr class="success">
+                    <th>Enviado</th><td><?php echo $this->ScheduleSendingEmail->getEmailsSent(); ?></td>
+                </tr>
+
+                <tr class="danger">
+                    <th>Fallado</th><td><?php echo $this->ScheduleSendingEmail->getEmailsFailed(); ?></td>
+                </tr>
+
+
+            </table>
+        </div>
+
+        <div class="col-lg-6">
+            <h4 class="page-header">Leyenda</h4>
+            <table class="table table-bordered table-striped">
+                <tr class="warning">
+                    <th>pending</th> <td>Celeste</td><td>Mail Pendiente</td>
+                </tr>  
+                <tr class="success">
+                    <th>sent</th> <td>Verde</td><td>Mail Enviado</td>
+                </tr>  
+
+                <tr class="danger">
+                    <th>failed</th> <td>Rojo</td><td>Error al enviar el mail</td>
+                </tr>  
+            </table>
+            
+         
+            <table class="table table-bordered table-striped">
+                <tr class="">
+                    <th>Combinaciones </th> <td><?php echo $this->ScheduleSendingEmail->getCombination(); ?></td>
+                </tr>  
+  
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12">
+        <h4 class="page-header">Lista de mails</h4>
+        <table class="table table-bordered table-striped cdiFontSize11 padding2">
+            <tr>
+                <th>N</th>
+                <th>Estado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+
+                <th>Facebook Email</th>
+                <th>Cumpleaños</th>
+                <th>Edad</th>
+
+                <th>Fecha de Envio</th>
+                <th>Desde</th>
+                <th>Texto</th>
+                <th>Asunto</th>
+                <th>Error</th>
+            </tr>  
+            <?php $count = 1; ?>
+            <?php foreach ($this->ScheduleSendingEmail->getSendingList() as $item): ?>
+
+                <?php $class = array("sent" => "success", "pending" => "warning", "failed" => "danger"); ?>
+
+                <tr class="<?php echo $class[$item->getStatus()]; ?>">
+                    <td><?php echo $count;
+        $count++;
+                ?></td>
+                    <td><?php echo utf8_encode($item->getStatus()); ?></td>
+                    <td><?php echo utf8_encode($item->getName()); ?></td>
+                    <td><?php echo utf8_encode($item->getLastname()); ?></td>
+
+                    <td><?php echo utf8_encode($item->getFacebookEmail()); ?></td>
+                    <td><?php echo utf8_encode($item->getBirthdayText()); ?></td>
+                    <td><?php echo utf8_encode($item->getAge()); ?></td>
+
+
+                    <td><?php if ($item->getShippingDate()) {
+                    echo $item->getShippingDate()->format("Y-m-d H:i:s");
+                } ?></td>
+                    <td><?php echo utf8_encode($item->getEmailFrom()); ?></td>
+                    <td><?php echo utf8_encode($item->getText()); ?></td>
+                    <td><?php echo utf8_encode($item->getSubject()); ?></td>
+                    <td>
+        <?php if ($item->getSendError()): ?>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse" data-target="#collapsePanel<?php echo $item->getId(); ?>" aria-expanded="false" aria-controls="collapsePanel<?php echo $item->getId(); ?>"><a style="cursor:pointer"><i class="fa fa-error">Error</i></a> </div>
+
+
+
+                                <div class="panel-body collapse" id="collapsePanel<?php echo $item->getId(); ?>">
+
+                            <?php echo utf8_encode($item->getSendError()); ?>
+                                </div>
+                            </div>
+                <?php endif; ?>
+                    </td>
+                </tr>  
+    <?php endforeach; ?>
+        </table>
+    </div>
+    </div>
+<?php endif; ?>

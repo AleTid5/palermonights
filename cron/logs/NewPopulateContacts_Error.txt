@@ -1,0 +1,2 @@
+PHP Notice:  Undefined index: fullname in /var/www/palermonights/App/cron/newPopulateContacts.php on line 79
+PHP Notice:  Undefined index: facebook_user in /var/www/palermonights/App/cron/newPopulateContacts.php on line 80

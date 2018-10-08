@@ -1,0 +1,113 @@
+<?php if ($this->persist): ?>
+    <div class="alert alert-success">
+        Se guardo correctamente!
+    </div>
+
+
+    <script>  setTimeout('refrescar()', 500);</script>
+<?php elseif ($this->persist === false): ?>
+    <div class="alert alert-danger">
+        Error: Verificar Formulario!
+    </div>
+
+<?php endif; ?>
+
+<?php
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<div class="row container-fluid">
+    <?php $multiplo = 2; ?>
+    <?php $countRow = 2; ?>
+    <?php foreach ($form as $element) : ?>
+
+        <?php switch ($element->getAttribute('type')): ?>
+<?php case "hidden": ?>
+                <?php echo $this->formElement($element); ?>
+                <?php break; ?>
+            <?php case "submit": ?>
+                <?php $element->setAttribute('class', 'btn btn-default'); ?>
+                <div class="col-lg-12 col-md-12">
+                    <?php echo $this->formElement($element); ?>
+                </div>
+                <?php break; ?>
+
+            <?php case "textarea": ?>
+
+                <?php if (($countRow % $multiplo) == 0): ?>
+                    <div class="row">
+                    <?php endif; ?>
+
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div  class=" form-group<?php if ($this->formElementErrors($element)) echo " has-error" ?>">
+                            <label class="col-lg-2 col-md-2 control-label"><?php echo $element->getLabel() ?></label>
+
+                            <div class="col-lg-10 col-md-10">
+                                <?php echo $this->formElement($element); ?>
+                                <?php if ($element->getOption('description')): ?>
+                                    <p class="help-block"><?php echo $element->getOption('description') ?></p>
+                                <?php endif; ?>
+                                <?php if ($this->formElementErrors($element)) : ?>
+                                    <?php
+                                    // Imprimo los errores
+                                    echo $this->formElementErrors()
+                                            ->setMessageOpenFormat('<span class="help-block">')
+                                            ->setMessageSeparatorString('</span><span class="help-block">')
+                                            ->setMessageCloseString('</span>')
+                                            ->render($element);
+                                    ?>
+
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $countRow++; ?>
+                    <?php if (($countRow % $multiplo) == 0): ?>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php break; ?>
+
+            <?php default: ?>
+
+                <?php if (($countRow % $multiplo) == 0): ?>
+                    <div class="row">
+                    <?php endif; ?>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div  class=" form-group<?php if ($this->formElementErrors($element)) echo " has-error" ?>">
+                            <label class="col-lg-4 col-md-4 control-label"><?php echo $element->getLabel() ?></label>
+
+                            <div class="col-lg-8 col-md-8">
+                                <?php echo $this->formElement($element); ?>
+                                <?php if ($element->getOption('description')): ?>
+                                    <p class="help-block"><?php echo $element->getOption('description') ?></p>
+                                <?php endif; ?>
+                                <?php if ($this->formElementErrors($element)) : ?>
+                                    <?php
+                                    // Imprimo los errores
+                                    echo $this->formElementErrors()
+                                            ->setMessageOpenFormat('<span class="help-block">')
+                                            ->setMessageSeparatorString('</span><span class="help-block">')
+                                            ->setMessageCloseString('</span>')
+                                            ->render($element);
+                                    ?>
+
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $countRow++; ?>
+                    <?php if (($countRow % $multiplo) == 0): ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php break; ?>
+        <?php endswitch; ?>
+
+    <?php endforeach; ?>
+</div>
+<?php echo $this->form()->closeTag($form); ?>
+

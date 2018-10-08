@@ -1,0 +1,52 @@
+<?php if(!$this->zfcUserIdentity()): ?>
+
+    <!-- display the login form -->
+     <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown pull-right ">
+                    <a class="dropdown-toggle " data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu ">
+                     
+                   
+                        
+                        <li><a href="/user/login"><i class="fa fa-sign-out fa-fw"></i> Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+<?php else: ?>
+    <!-- display the 'display name' of the user -->
+    <?php //echo $this->zfcUserIdentity()->getEmail(); ?>
+    
+     <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        <?php if($this->isAllowed('admin', 'abm')): ?>
+                          <li><a href="/admin/user/list"><i class="fa fa-user fa-fw"></i>Administrar Usuarios</a>
+                        </li>
+                        <?php endif; ?>
+                        
+                        
+                        <li><a href="/user/change-password"><i class="fa fa-user fa-fw"></i>Cambiar Password</a>
+                        </li>
+                   
+                        <li class="divider"></li>
+                        <li><a href="/user/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+    
+
+<?php endif?>

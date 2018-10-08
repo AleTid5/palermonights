@@ -1,0 +1,47 @@
+
+
+<?php
+$form = $this->form;
+$form->prepare();
+//$form->setAttribute('action', $this->url('application', array('action' => 'edit')))->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<?php foreach ($form as $element) : ?>
+<?php if ('hidden' != $element->getAttribute('type')):?>
+    <div class="col-lg-6">
+        <div  class="form-group<?php if ($this->formElementErrors($element)) echo " has-error" ?>">
+            <?php if ('submit' != $element->getAttribute('type')) { ?>
+                <label class="col-lg-4 control-label"><?php echo $element->getLabel() ?></label>
+                <?php
+                $element->setAttribute('class', 'form-control')
+                        ->setAttribute('placeholder', $element->getLabel());
+            } else {
+                $element->setAttribute('class', 'btn btn-success');
+            }
+            ?>
+            <div class="col-lg-6">
+                <?php echo $this->formElement($element); ?>
+                 <?php if ($element->getOption('description')): ?>
+                                    <p class="help-block"><?php echo $element->getOption('description') ?></p>
+                                <?php endif; ?>
+
+                <?php if ($this->formElementErrors($element)) : ?>
+                    <?php
+                    // Imprimo los errores
+                    echo $this->formElementErrors()
+                            ->setMessageOpenFormat('<span class="help-block">')
+                            ->setMessageSeparatorString('</span><span class="help-block">')
+                            ->setMessageCloseString('</span>')
+                            ->render($element);
+                    ?>
+
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+  <?php else: ?>
+   <?php echo $this->formElement($element); ?>
+ <?php endif; ?>
+
+<?php endforeach; ?>

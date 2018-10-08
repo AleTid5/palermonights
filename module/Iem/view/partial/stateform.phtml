@@ -1,0 +1,33 @@
+
+
+
+<?php
+$form = $this->form;
+$form->prepare();
+//$form->setAttribute('action', $this->url('application', array('action' => 'edit')))->prepare();
+echo $this->form()->openTag($form);
+?>
+
+
+
+<?php $element = $form->get("conversationId"); ?>
+<?php echo $this->formElement($element); ?>
+<?php $element = $form->get("csrf"); ?>
+<?php echo $this->formElement($element); ?>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-xs-6">
+            <?php $element = $form->get("state"); ?>
+            <?php echo $this->formElement($element); ?>
+        </div>
+        <div class="col-xs-4">
+            <?php
+            $element = $form->get("submit");
+            $element->setAttribute('class', 'btn btn-success');
+            ?>
+<?php echo $this->formElement($element); ?>
+        </div>
+    </div>
+</div>
+<?php echo $this->form()->closeTag($form); ?>
+

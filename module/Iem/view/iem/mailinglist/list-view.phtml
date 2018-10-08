@@ -1,0 +1,43 @@
+<?php if( $this->mailingListManager): ?>
+<div class="row container-fluidt">
+    <br>
+    <div class="col-lg-12">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Nombre</th> <td><?php echo $this->mailingListManager->getName(); ?></td>
+               <th>Archivo</th> <td><?php echo $this->mailingListManager->getFileName(); ?></td>
+                 <th>Cantidad</th> <td><?php echo count($this->mailingListManager->getList()); ?></td>
+
+            </tr>  
+        </table>
+    </div>
+    
+    
+    
+    <div class="col-lg-12">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Numero</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Email Facebook</th>
+                <th>Cumpleaños</th>
+                <th>Edad</th>
+            </tr>  
+            <?php $count= 1; ?>
+            <?php foreach($this->mailingListManager->getList() as $item): ?>
+             <tr>
+                  <td><?php echo $count; $count++; ?></td>
+                  <td><?php echo utf8_encode($item->getName()); ?></td>
+                <td><?php echo utf8_encode($item->getLastname()); ?></td>
+                <td><?php echo utf8_encode($item->getEmail()); ?></td>
+                <td><?php echo utf8_encode( $item->getFacebookEmail()); ?></td>
+                <td><?php echo utf8_encode($item->getBirthdayText()); ?></td>
+                <td><?php echo utf8_encode($item->getAge()); ?></td>
+            </tr>  
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+<?php endif; ?>

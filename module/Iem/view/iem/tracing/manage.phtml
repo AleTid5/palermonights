@@ -1,0 +1,125 @@
+
+<div class="row">
+    <div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Conversación
+            </h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                
+                    <tr>
+
+                    <th>  Asunto:</th> <td colspan="3"><?php echo nl2br($this->emailConversation->getSubject()); ?></td>
+                  
+                </tr>
+                
+                <tr>
+
+                    <th>  Email A:</th>  <td>  <?php echo $this->emailConversation->getEmailA(); ?></td>
+                    <th>  Email B:</th>  <td>  <?php echo $this->emailConversation->getEmailB(); ?></td>
+                   
+                </tr>
+                
+                 <tr>
+
+                    <th>  Estado:</th><td><?php echo $this->partial('partial/stateform.phtml', array('form' => $this->formState)); ?> </td>
+
+                    <th>  ID:</th><td>  <?php echo $this->emailConversation->getId(); ?></td>
+                </tr>
+
+
+            
+
+                <tr>
+
+
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+</div>
+<div class="row">
+
+
+    <div class="panel-group" id="accordion">
+
+
+
+
+
+
+
+
+
+
+        <?php foreach ($this->colEmailStore as $emailStore): ?>
+
+            <div class="panel <?php echo ($emailStore->getType() == "Envio") ? "panel-success" : "panel-info"; ?>">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $emailStore->getId(); ?>">
+                            <?php echo $emailStore->getSenderBy(); ?> => <?php echo $emailStore->getSentTo(); ?>
+                        </a>
+                    </h4>
+                </div>
+                <div id="<?php echo $emailStore->getId(); ?>" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <?php
+                        if (preg_match("/<span|<div|<table/", $emailStore->getBody())) {
+                            echo $emailStore->getBody();
+                        } else {
+                            echo nl2br($emailStore->getBody());
+                        }
+                        ?>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+<?php endforeach; ?>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#responder">
+                        Responder
+                    </a>
+                </h4>
+            </div>
+            <div id="responder" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row container-fluid">
+<?php echo $this->partial('widget/formHorizontalOne', array('form' => $this->formResponse)); ?> 
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    function loadText(element) {
+
+        $.get('/iem/tracing/load-text', {id: $(element).val()})
+                .done(function (data) {
+                    $('#bodyText').html(data);
+                });
+    }
+
+</script>

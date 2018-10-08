@@ -1,0 +1,13 @@
+.vagrant/
+.idea/
+vendor/
+config/development.config.php
+data/DoctrineORMModule/
+!data/cache/.gitkeep
+phpunit.xml
+composer.lock
+public/media/*
+config/constants.php
+config/autoload/options-eventos.global.php
+config/google/client_credentials.json
+public/img/menu-logo.jpg

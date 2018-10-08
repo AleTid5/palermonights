@@ -1,0 +1,46 @@
+
+<br>
+<?php foreach($this->contacts as $contact): ?>
+<table class="table table-condensed table-striped customClass">
+    <tr>
+        <th>ID</th>
+        <td><?php echo $contact->getId(); ?></td>
+    </tr>
+    
+    <tr>
+        <th>Nombre</th>
+        <td><?php echo $contact->getName(); ?></td>
+    </tr>
+    
+    <tr>
+        <th>Apellido</th>
+         <td><?php echo $contact->getLastname(); ?></td>
+    </tr>
+    
+    <tr>
+        <th>Edad</th>
+         <td><?php echo $contact->getAge(); ?></td>
+    </tr>
+    
+    <tr>
+        <th>Cumpleaños</th>
+         <td><?php echo $contact->getBirthdayText(); ?></td>
+    </tr>
+    
+     <tr>
+        <th>Facebook Mail</th>
+         <td><?php echo $contact->getFacebookEmail(); ?></td>
+    </tr>
+    
+    <tr>
+        <th>Facebook URL</th>
+        <td><a href="<?php echo $contact->getFacebookUrl(); ?>" target="_blank"><?php echo $contact->getFacebookUrl(); ?></a></td>
+    </tr>
+    
+    
+    
+</table>
+
+
+
+<?php endforeach; ?>

@@ -1,0 +1,23 @@
+ <?php 
+   echo $this->headScript()
+           ->appendFile($this->basePath() . '/lib/moment/moment.min.js')
+           ->appendFile($this->basePath() . '/lib/datetimepicker/js/bootstrap-datetimepicker.min.js')
+           ->appendFile($this->basePath() . '/lib/moment/locale/es.js')
+         
+           ?>
+
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/favicon.ico'))
+        ->appendStylesheet($this->basePath() . '/lib/datetimepicker/css/bootstrap-datetimepicker.min.css')
+?> 
+
+
+<br>
+<div class="row container-fluid">
+   <?php echo $this->partial('widget/contactFilter', array('form' => $this->contactFilter)); ?> 
+</div>
+
+<br>
+<?php echo $this->RenderBootstrapGrid($this->grid); ?>
+
+

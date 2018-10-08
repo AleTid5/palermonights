@@ -1,0 +1,122 @@
+<div class="row">
+    <?php
+    $form = clone $this->form;
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    ?>
+
+
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 ">
+        <div class="collapse <?php if ($this->form->hasValidated()) {
+        echo "in";
+    } ?>" id="collapseExample">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Indicar rango de fechas</div>
+
+
+
+                <div class="panel-body">
+
+
+
+                    <?php
+                    $element = $form->get('desde');
+                    ?>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 ">
+
+                        <div id='datetimepicker1' class="input-group date <?php if ($this->formElementErrors($element)) echo " has-error" ?> nopadding nomargin colorBlack">   
+
+<?php echo $this->formElement($element); ?>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                            <?php if ($this->formElementErrors($element)) : ?>
+                            <div class="has-error">
+                                <?php
+                                // Imprimo los errores
+                                echo $this->formElementErrors()
+                                        ->setMessageOpenFormat('<span class="help-block">')
+                                        ->setMessageSeparatorString('</span><span class="help-block">')
+                                        ->setMessageCloseString('</span>')
+                                        ->render($element);
+                                ?>
+                            </div>
+<?php endif; ?>
+
+
+
+                    </div>
+
+
+
+                    <?php
+                    $element = $form->get('hasta');
+                    ?>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 ">
+
+                        <div id='datetimepicker2' class="input-group date <?php if ($this->formElementErrors($element)) echo " has-error" ?> nopadding nomargin colorBlack">   
+
+<?php echo $this->formElement($element); ?>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>     
+                            <?php if ($this->formElementErrors($element)) : ?>
+                            <div class="has-error">
+                                <?php
+                                // Imprimo los errores
+                                echo $this->formElementErrors()
+                                        ->setMessageOpenFormat('<span class="help-block">')
+                                        ->setMessageSeparatorString('</span><span class="help-block">')
+                                        ->setMessageCloseString('</span>')
+                                        ->render($element);
+                                ?>
+                            </div>
+<?php endif; ?>
+
+
+
+                    </div>
+              
+
+
+<?php $element = $form->get('submit'); ?>
+                        <?php $element->setAttribute('class', " btn btn-info  col-lg-12 col-md-12 col-sm-12 col-xs-12"); ?>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 ">
+                    <div  class="form-group nopadding nomargin colorBlack">   
+<?php echo $this->formElement($element); ?>
+                    </div>
+                </div>
+
+<?php echo $this->form()->closeTag($form); ?>
+
+                <!--FIN FORMULARIO-->
+
+            </div>
+
+
+        </div>
+    </div>
+ </div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
+    <button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fa fa-calendar"></i>
+    </button>
+</div>
+
+</div>
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker1').datetimepicker({
+            pickTime: false,
+            language: 'es'
+        });
+
+        $('#datetimepicker2').datetimepicker(
+                {
+                    pickTime: false,
+                    language: 'es'
+                });
+    });
+</script>

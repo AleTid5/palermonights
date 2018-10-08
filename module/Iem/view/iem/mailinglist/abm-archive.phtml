@@ -1,0 +1,36 @@
+   <?php 
+   echo $this->headScript()
+                ->appendFile('/js/jquery.form.js', 'text/javascript');
+        ?>
+
+<br>
+<button class="btn btn-primary " onclick="cdiGoEdit()"><i class="fa fa-plus"></i> Agregar Lista</button>
+<br><br>
+<?php echo $this->RenderBootstrapGrid($this->grid); ?>
+
+<div class='modal fade' id='cdiModal'>
+    <div class='modal-dialog modal-lg'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
+                <h4 class='modal-title'><div id='cdiTitle'>Edicion</div></h4>
+            </div>
+            <div class='modal-body'>
+                <div id='cdiAjaxContent'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+    function cdiGoEdit(id) {
+        $.get('/iem/mailinglist/edit-archive', {id: id})
+                .done(function(data) {
+            $('#cdiTitle').html('Edicion');
+            $('#cdiAjaxContent').html(data);
+            $('#cdiModal').modal('show');
+
+        });
+    }
+    
+    </script>

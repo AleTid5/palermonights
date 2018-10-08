@@ -1,0 +1,62 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('EmailMarketing'); ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+ 
+        <!-- Le styles -->
+       <?php echo $this->partial('layout/css'); ?>
+
+
+        <!-- Scripts -->
+       <?php echo $this->partial('layout/js'); ?>
+        
+        
+    </head>
+
+    <body>
+        <div id="wrapper">
+
+            <nav class="navbar navbar-default navbar-static-top nav-custom" role="navigation" style="margin-bottom: 0">
+              
+                <div class="navbar-header ">
+                    
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="
+                       "><span class="brand"><i class="fa fa-mail-forward"></i> EmailMarketing</span></a>
+                       
+                       
+                
+                </div>
+                   <?php echo $this->partial('layout/iconlogin', array('vr' => 'zf2')); ?>
+                
+            </nav>
+           
+            <?php echo $this->partial('layout/navbar', array('vr' => 'zf2')); ?>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+     
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                    
+                    <div id="ajax-loader" style="display: none; left:45%; top:40%; margin: 0 auto; position: fixed;"><img src="/img/ajax.gif" /></div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+

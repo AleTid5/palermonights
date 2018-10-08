@@ -1,0 +1,5 @@
+<br>
+<button class="btn btn-primary " onclick="cdiGoEdit()"><i class="fa fa-plus"></i> Agregar Cuenta</button>
+<br><br>
+<?php echo $this->RenderBootstrapGrid($this->grid); ?>
+<?php echo $this->JsAbmAjaxModal("EmailAuth", "/iem/resources/edit-email-auth", "/iem/resources/edit-email-auth"); ?>

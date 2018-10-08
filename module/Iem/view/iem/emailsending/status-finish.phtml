@@ -1,0 +1,44 @@
+<meta http-equiv="refresh" content="90" name="content-type" />
+<div class="row container-fluidt"> 
+    <table class="table table-condensed table-bordered table-striped center-table ">
+        <tr>
+            <th>Estado</th>
+            <th>Seguir</th>
+            <th><i class="fa fa-calendar"></i> Programación</th>
+            <th><i class="fa fa-calendar"></i> Estimada</th>
+            <th><i class="fa fa-calendar"></i> Finalización</th>
+
+            <th><i class="fa fa-group" data-toggle="tooltip" data-placement="top" title="Total"></i></th>
+            <th><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="top" title="Pendientes"></i></th>
+            <th><i class="fa fa-cog" data-toggle="tooltip" data-placement="top" title="Procesados"></i></th>
+            <th><i class="fa fa-send" data-toggle="tooltip" data-placement="top" title="Enviados"></i></th>
+            <th><i class="fa fa-warning" data-toggle="tooltip" data-placement="top" title="Fallados"></i></th>
+
+
+
+        </tr>
+        <?php foreach ($this->ScheduleSendingEmail as $item): ?>
+            <tr>
+                <td><?php echo $item->getState(); ?></td>
+                <td><a target="_blank" href="/iem/emailsending/list-view?id=<?php echo $item->getId(); ?>">LINK</a></td>
+                <td><?php echo $item->getDatetimeSchedule()->format("Y-m-d H:i"); ?></td>
+                <td><?php //echo $item->getEstimatedEndingtime()->format("Y-m-d H:i");    ?></td>
+                <td><?php
+                    if ($item->getDatetimeFinish()) {
+                        echo $item->getDatetimeFinish()->format("Y-m-d H:i");
+                    }
+                    ?></td>
+                <td ><?php echo $item->getEmailsTotal(); ?></td>
+                <td class="warning"><?php echo $item->getEmailsPending(); ?></td>
+                <td class="info"><?php echo $item->getEmailsProcessed(); ?></td>
+                <td class="success"><?php echo $item->getEmailsSent(); ?></td>
+                <td class="danger"><?php echo $item->getEmailsFailed(); ?></td>
+
+
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+
+   
+</div>

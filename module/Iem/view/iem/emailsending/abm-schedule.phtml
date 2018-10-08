@@ -1,0 +1,17 @@
+<?php
+echo $this->headScript()
+        ->appendFile($this->basePath() . '/lib/moment/moment.min.js')
+        ->appendFile($this->basePath() . '/lib/datetimepicker/js/bootstrap-datetimepicker.min.js')
+        ->appendFile($this->basePath() . '/lib/moment/locale/es.js')
+?>
+
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/favicon.ico'))
+        ->appendStylesheet($this->basePath() . '/lib/datetimepicker/css/bootstrap-datetimepicker.min.css')
+?> 
+<br>
+<button class="btn btn-primary " onclick="cdiGoEdit()"><i class="fa fa-plus"></i> Agregar Envio</button>
+<br><br>
+<?php echo $this->RenderBootstrapGrid($this->grid); ?>
+<?php echo $this->JsAbmAjaxModal("ScheduleSendingEmail", "/iem/emailsending/edit-schedule", "/iem/emailsending/edit-schedule"); ?>
+

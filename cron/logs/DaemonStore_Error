@@ -1,0 +1,32 @@
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Warning:  imap_open(): Couldn't open stream {imap.gmail.com:993/imap/ssl}INBOX in /var/www/palermonights/App/vendor/cdi/cditools/src/CdiTools/Mail/Imap.php on line 118
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Invalid credentials (Failure) (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Invalid credentials (Failure) (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Invalid credentials (Failure) (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Invalid credentials (Failure) (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [ALERT] Please log in via your web browser: https://support.google.com/mail/acco (errflg=2) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Retrying PLAIN authentication after [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=1) in Unknown on line 0
+PHP Notice:  Unknown: Can not authenticate to IMAP server: [AUTHENTICATIONFAILED] Invalid credentials (Failure) (errflg=2) in Unknown on line 0

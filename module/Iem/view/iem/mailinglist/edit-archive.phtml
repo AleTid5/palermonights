@@ -1,0 +1,138 @@
+<div id="status">
+    <?php if ($this->persist): ?>
+        <div class="alert alert-success">
+            Se guardo correctamente!
+        </div>
+
+
+        <script>  setTimeout('refrescar()', 500);</script>
+    <?php elseif ($this->persist === false): ?>
+        <div class="alert alert-danger">
+            Error: Verificar Formulario!
+        </div>
+
+    <?php endif; ?>
+
+    <?php
+    $form = $this->form;
+    $this->form->setAttribute("action", "/iem/mailinglist/edit-archive");
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    ?>
+    <div class="row container-fluid">
+        <?php $multiplo = 2; ?>
+        <?php $countRow = 2; ?>
+        <?php foreach ($form as $element) : ?>
+
+            <?php switch ($element->getAttribute('type')): ?>
+<?php case "hidden": ?>
+                    <?php echo $this->formElement($element); ?>
+                    <?php break; ?>
+                <?php case "submit": ?>
+                    <?php $element->setAttribute('class', 'btn btn-default'); ?>
+                    <div class="col-lg-12 col-md-12">
+                        <?php echo $this->formElement($element); ?>
+                    </div>
+                    <?php break; ?>
+                <?php default: ?>
+
+                    <?php if (($countRow % $multiplo) == 0): ?>
+                        <div class="row">
+                        <?php endif; ?>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div  class=" form-group<?php if ($this->formElementErrors($element)) echo " has-error" ?>">
+                                <label class="col-lg-4 col-md-4 control-label"><?php echo $element->getLabel() ?></label>
+
+                                <div class="col-lg-8 col-md-8">
+                                    <?php echo $this->formElement($element); ?>
+                                    <?php if ($element->getOption('description')): ?>
+                                        <p class="help-block"><?php echo $element->getOption('description') ?></p>
+                                    <?php endif; ?>
+                                    <?php if ($this->formElementErrors($element)) : ?>
+                                        <?php
+                                        // Imprimo los errores
+                                        echo $this->formElementErrors()
+                                                ->setMessageOpenFormat('<span class="help-block">')
+                                                ->setMessageSeparatorString('</span><span class="help-block">')
+                                                ->setMessageCloseString('</span>')
+                                                ->render($element);
+                                        ?>
+
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php $countRow++; ?>
+                        <?php if (($countRow % $multiplo) == 0): ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php break; ?>
+            <?php endswitch; ?>
+
+        <?php endforeach; ?>
+    </div>
+    <?php echo $this->form()->closeTag($form); ?>
+
+
+    <br>
+    <div>
+        <div class="progress progress-striped active">
+            <div id="bar" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="1" aria-valuemax="100" >
+
+            </div>
+        </div>
+        <span id="percent" ></span>
+    </div>
+
+
+    <script>
+        (function() {
+
+            var bar = $('#bar');
+            var percent = $('#percent');
+            var status = $('#status');
+
+            $('#MailingListManager').ajaxForm({
+                beforeSend: function() {
+                    //status.empty();
+                    var percentVal = '0%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';
+                    bar.attr('aria-valuenow', percentComplete);
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+
+                },
+                success: function() {
+
+
+
+                },
+                complete: function(xhr) {
+                    var percentVal = '100%';
+                    bar.width(percentVal)
+                    percent.html("100% Aguarde...");
+                    bar.removeClass("progress-bar-warning");
+                    bar.addClass("progress-bar-success");
+                    status.html(xhr.responseText);
+
+                }
+            });
+
+        })();
+
+
+        function refrescar()
+        {
+            window.location.reload();
+        }
+    </script>
+
+
+</div>

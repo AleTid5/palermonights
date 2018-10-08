@@ -1,0 +1,26 @@
+<?php if(isset($this->resultTest)): ?>
+
+<?php if($this->resultTest[0]): ?>
+
+<div class="alert alert-success ">
+    El mail se envio con exito
+</div>
+<?php else: ?>
+<div class="alert alert-danger">
+    El mail no se pudo enviar
+    
+    <br> <br>
+    
+    <h4>Error</h4>
+    <?php echo $this->resultTest[1]; ?>
+</div>
+<?php endif; ?>
+
+<?php else: ?>
+
+<div class="row container-fluid">
+
+ <?php echo $this->partial('widget/formHorizontal', array('form' => $this->form)); ?> 
+    </div>
+
+<?php endif; ?>
